@@ -2,7 +2,7 @@
 Static site, no build, no dependencies. Hosted free on Cloudflare Pages (project `shivay-studio`), auto-deploys on every push to `main`.
 
 - `/` – public website: https://shivay-studio.pages.dev
-- `/login` – studio login + dashboard (demo, data stays in the browser): https://shivay-studio.pages.dev/login
+- `/login` (file `login.html`) – studio login + dashboard (demo, data stays in the browser): https://shivay-studio.pages.dev/login
 - `/demo` redirects to `/` (see `_redirects`)
 
 Edit `index.html`:
