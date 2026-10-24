@@ -73,7 +73,7 @@ td{padding:12px 10px;border-top:1px solid var(--line);white-space:nowrap}
 .cal .dy.td{outline:2px solid var(--blue)}.cal .dy em{display:block;font-style:normal;background:var(--blue);color:#fff;border-radius:6px;padding:1px 6px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .gc{background:var(--card);border-radius:22px;overflow:hidden}
-.gc .cv{height:130px}.gc .bd{padding:16px}
+.gc .cv{height:150px;position:relative;overflow:hidden}.gc .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gc .act{display:flex;gap:8px;margin-top:12px}.gc .act .btn{flex:1;text-align:center}.gc .bd{padding:16px}
 .pg{height:6px;background:var(--soft);border-radius:9px;overflow:hidden;margin:10px 0}.pg i{display:block;height:100%;background:var(--ok)}
 .fm{display:grid;gap:12px;max-width:460px}
 .tabs{display:none}
@@ -198,10 +198,17 @@ function vCalendar(d){
  for(var k=1;k<=days;k++){var ds=iso(new Date(m.getFullYear(),m.getMonth(),k));var ev=d.bookings.filter(function(x){return x.date===ds});cells+='<div class="dy'+(ds===off(0)?' td':'')+'">'+k+ev.map(function(x){return '<em>'+esc(x.client)+'</em>'}).join('')+'</div>'}
  return hdr('Calendar',m.toLocaleString('en',{month:'long',year:'numeric'}),'<div><button class="btn sm g" data-cal="-1">‹</button> <button class="btn sm g" data-cal="0">Today</button> <button class="btn sm g" data-cal="1">›</button></div>')+'<div class="pn"><div class="cal">'+cells+'</div></div>';
 }
+var COVER={'Wedding':'photo-1519741497674-611481863552','Pre-wedding':'photo-1522673607200-164d1b6ce486','Portrait':'photo-1438761681033-6461ffad8d80','Product / Business':'photo-1523275335684-37898b6baf30','Birthday / Event':'photo-1492684223066-81342ee5ff30','Film / Ad':'photo-1485846234645-a62644f84728'};
+function galleryUrl(x){return location.origin+'/gallery?c='+encodeURIComponent(x.client)+'&t='+encodeURIComponent(x.type)+'&s='+encodeURIComponent(x.status)}
 function vGalleries(d){
  var g=d.bookings.filter(function(x){return x.status==='Editing'||x.status==='Delivered'||x.status==='Shot'});
- return hdr('Client galleries','Share proofs and final photos with one link','')+'<div class="gal">'+g.map(function(x,i){var done=x.status==='Delivered',pct=done?100:x.status==='Editing'?60:25;return '<div class="gc"><div class="cv" style="background:'+grd((x.id*47)%360)+'"></div><div class="bd"><b>'+esc(x.client)+'</b><br><small style="color:var(--mute)">'+esc(x.type)+' · '+(x.photos||'—')+' photos</small><div class="pg"><i style="width:'+pct+'%"></i></div><span class="tag t-'+x.status+'">'+x.status+'</span> <button class="btn sm g" data-link="'+x.id+'" style="float:right">Copy link</button></div></div>'}).join('')+'</div>';
+ return hdr('Client galleries','Share proofs and final photos with one link','')+'<div class="gal">'+g.map(function(x){var done=x.status==='Delivered',pct=done?100:x.status==='Editing'?60:25;return '<div class="gc"><div class="cv" style="background:'+grd((x.id*47)%360)+'"><img src="https://images.unsplash.com/'+(COVER[x.type]||COVER.Wedding)+'?auto=format&fit=crop&w=600&q=70" alt="" loading="lazy" onerror="this.remove()"></div><div class="bd"><b>'+esc(x.client)+'</b><br><small style="color:var(--mute)">'+esc(x.type)+' · '+(x.photos?x.photos+' photos':'photos coming soon')+'</small><div class="pg"><i style="width:'+pct+'%"></i></div><span class="tag t-'+x.status+'">'+x.status+'</span><div class="act"><a class="btn sm g" href="'+esc(galleryUrl(x))+'" target="_blank" rel="noopener">Open</a><button class="btn sm" data-link="'+x.id+'">'+(navigator.share?'Share link':'Copy link')+'</button></div></div></div>'}).join('')+'</div>';
 }
+function copyText(t){
+ if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){return fallbackCopy(t)});
+ return fallbackCopy(t);
+}
+function fallbackCopy(t){return new Promise(function(ok,no){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(a);a.select();a.setSelectionRange(0,t.length);var r=false;try{r=document.execCommand('copy')}catch(e){}a.remove();r?ok():no()})}
 function clients(d){var m={};d.bookings.forEach(function(x){var c=m[x.client]||(m[x.client]={name:x.client,phone:x.phone,n:0,total:0,paid:0,last:''});c.n++;c.total+=x.amount;c.paid+=x.paid;if(x.date>c.last)c.last=x.date});return Object.keys(m).map(function(k){return m[k]})}
 function vClients(d){
  return hdr('Clients',clients(d).length+' people','')+'<div class="pn">'+clients(d).map(function(c){return '<div class="li"><div><b>'+esc(c.name)+'</b><small>'+esc(c.phone)+' · '+c.n+' shoot'+(c.n>1?'s':'')+' · last '+fd(c.last)+'</small></div><div style="text-align:right"><b>'+inr(c.total)+'</b><small>'+(c.total>c.paid?inr(c.total-c.paid)+' due':'all paid')+'</small></div></div>'}).join('')+'</div>';
@@ -225,7 +232,9 @@ function bindView(v,d){
  $$('[data-del]').forEach(function(b){b.onclick=function(){if(confirm('Delete this booking?')){var d=db();d.bookings=d.bookings.filter(function(x){return x.id!=b.getAttribute('data-del')});save();route()}}});
  $$('[data-pay]').forEach(function(b){b.onclick=function(){var x=find(b.getAttribute('data-pay'));x.paid=x.amount;save();route();toast('Payment recorded')}});
  $$('[data-cal]').forEach(function(b){b.onclick=function(){var n=+b.getAttribute('data-cal');calOff=n?calOff+n:0;route()}});
- $$('[data-link]').forEach(function(b){b.onclick=function(){var t='https://shivay.studio/g/'+(1000+ +b.getAttribute('data-link'));try{navigator.clipboard.writeText(t)}catch(e){}toast('Link copied (demo)')}});
+ $$('[data-link]').forEach(function(b){b.onclick=function(){var x=find(b.getAttribute('data-link')),t=galleryUrl(x);
+  if(navigator.share){navigator.share({title:'Your photos — Shivay Studio',text:'Hi '+x.client+', your photos from Shivay Studio:',url:t}).catch(function(){});return}
+  copyText(t).then(function(){toast('Link copied ✓')},function(){prompt('Copy this link:',t)})}});
  var sf=$('#sf');if(sf)sf.onsubmit=function(e){e.preventDefault();var f=new FormData(sf),d=db();d.studio={name:f.get('name'),phone:f.get('phone'),place:f.get('place')};save();route();toast('Saved')};
  var rs=$('#reset');if(rs)rs.onclick=function(){if(confirm('Reset all demo data?')){set('db',seed());route();toast('Demo data reset')}};
 }
