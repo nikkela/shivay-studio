@@ -24,7 +24,7 @@ img{display:block;max-width:100%}
 /* nav */
 nav.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:0 max(16px,calc(50% - 540px));height:52px;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);font-size:13px}
 .brand{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
-.brand svg{width:28px;height:28px;color:var(--fg)}
+.brand svg{width:30px;height:30px;color:var(--fg)}
 nav.top div{display:flex;gap:24px;align-items:center}
 nav.top div a{color:var(--fg);text-decoration:none;opacity:.8}
 nav.top div a:hover{opacity:1}
@@ -137,7 +137,12 @@ footer.f .brand{justify-content:center;margin-bottom:10px}
 <div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#reviews">Reviews</a><a class="pill" href="#book">Book now</a></div>
 </nav>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 100 100"><path d="M50 40.5L58.23 45.25L77.73 53.9A28 28 0 0 0 67.24 27.94Z" fill="#ff9f0a" fill-opacity=".9"/><path d="M58.23 45.25L58.23 54.75L60.49 75.96A28 28 0 0 0 77.73 53.9Z" fill="#ff375f" fill-opacity=".9"/><path d="M58.23 54.75L50 59.5L32.76 72.06A28 28 0 0 0 60.49 75.96Z" fill="#bf5af2" fill-opacity=".9"/><path d="M50 59.5L41.77 54.75L22.27 46.1A28 28 0 0 0 32.76 72.06Z" fill="#5e5ce6" fill-opacity=".9"/><path d="M41.77 54.75L41.77 45.25L39.51 24.04A28 28 0 0 0 22.27 46.1Z" fill="#0a84ff" fill-opacity=".9"/><path d="M41.77 45.25L50 40.5L67.24 27.94A28 28 0 0 0 39.51 24.04Z" fill="#30d158" fill-opacity=".9"/><circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="3.2"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 100 100"><defs>
+<linearGradient id="mbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5f5f7"/><stop offset="1" stop-color="#c7c7cc"/></linearGradient>
+<linearGradient id="mbd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3c"/><stop offset="1" stop-color="#1c1c1e"/></linearGradient>
+<radialGradient id="mgl" cx=".38" cy=".34" r=".75"><stop offset="0" stop-color="#7d7aff"/><stop offset=".35" stop-color="#2b2a6b"/><stop offset=".75" stop-color="#05050c"/><stop offset="1" stop-color="#000"/></radialGradient>
+<linearGradient id="mrg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f0a"/><stop offset=".35" stop-color="#ff375f"/><stop offset=".65" stop-color="#bf5af2"/><stop offset="1" stop-color="#0a84ff"/></linearGradient>
+</defs><g transform="translate(0 -2)"><path fill-rule="evenodd" d="M24 33h12.5l3.6-6.2c.9-1.6 2.6-2.6 4.4-2.6h11c1.8 0 3.5 1 4.4 2.6l3.6 6.2H76c5.5 0 10 4.5 10 10v26c0 5.5-4.5 10-10 10H24c-5.5 0-10-4.5-10-10V43c0-5.5 4.5-10 10-10Z M50 38.6a17.4 17.4 0 1 0 0 34.8a17.4 17.4 0 1 0 0-34.8Z" fill="currentColor"/><circle cx="50" cy="56" r="14.2" fill="#0b0b0f"/><circle cx="50" cy="56" r="12.6" fill="none" stroke="url(#mrg)" stroke-width="1.6"/><circle cx="50" cy="56" r="10" fill="url(#mgl)"/><circle cx="45.6" cy="51.6" r="2.6" fill="#fff" fill-opacity=".75"/><circle cx="54" cy="60.4" r="1.1" fill="#fff" fill-opacity=".35"/><circle cx="74.5" cy="42" r="2.8" fill="#ffd60a"/></g></symbol></svg>
 
 <header class="hero" id="top">
 <div class="ph" data-photo="hero"></div>
