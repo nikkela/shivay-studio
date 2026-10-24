@@ -207,11 +207,11 @@ function vCalendar(d){
 }
 var COVER={'Wedding':'photo-1519741497674-611481863552','Pre-wedding':'photo-1522673607200-164d1b6ce486','Portrait':'photo-1438761681033-6461ffad8d80','Product / Business':'photo-1523275335684-37898b6baf30','Birthday / Event':'photo-1492684223066-81342ee5ff30','Film / Ad':'photo-1485846234645-a62644f84728'};
 /* test number comes from the Cloudflare secret via /api/config (only after the site password) — never stored in code */
-var CFG={testWhatsapp:''};
-fetch('/api/config',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(c){if(c&&c.testWhatsapp){CFG.testWhatsapp=c.testWhatsapp;if(authed())route()}}).catch(function(){});
+var CFG={test:false,last4:''};
+fetch('/api/config',{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(c){if(c&&c.test){CFG.test=true;CFG.last4=String(c.last4||'');if(authed())route()}}).catch(function(){});
 function waNumber(phone){var n=String(phone||'').replace(/\D/g,'');if(n.length===10)n='91'+n;return n.length>=11&&n.length<=15?n:''}
-function target(x){return CFG.testWhatsapp||waNumber(x.phone)}
-function mask(n){return '+'+n.slice(0,2)+' ••••••'+n.slice(-4)}
+function target(x){return CFG.test?'test':waNumber(x.phone)}
+function masked(){return '+91 ••••••'+CFG.last4}
 /* only real Google Photos share links are accepted */
 function okLink(u){try{var x=new URL(String(u).trim());return x.protocol==='https:'&&/^(photos\.app\.goo\.gl|photos\.google\.com)$/.test(x.hostname)}catch(e){return false}}
 function waMessage(x){
@@ -220,12 +220,12 @@ function waMessage(x){
 }
 function vGalleries(d){
  var g=d.bookings.filter(function(x){return x.status==='Editing'||x.status==='Delivered'||x.status==='Shot'});
- var banner=CFG.testWhatsapp?'<div class="pn" style="padding:14px 18px;background:#f59e0b1f;color:var(--fg)">🧪 <b>Test mode:</b> every WhatsApp goes to your number '+mask(CFG.testWhatsapp)+', not to clients.</div>':'';
+ var banner=CFG.test?'<div class="pn" style="padding:14px 18px;background:#f59e0b1f;color:var(--fg)">🧪 <b>Test mode:</b> every WhatsApp goes to your number '+masked()+', not to clients.</div>':'';
  return hdr('Client galleries','Paste the Google Photos link, then send it to the client on WhatsApp','')+banner+'<div class="gal">'+g.map(function(x){var done=x.status==='Delivered',pct=done?100:x.status==='Editing'?60:25,has=okLink(x.link||''),to=target(x);
   return '<div class="gc"><div class="cv" style="background:'+grd((x.id*47)%360)+'"><img src="https://images.unsplash.com/'+(COVER[x.type]||COVER.Wedding)+'?auto=format&fit=crop&w=600&q=70" alt="" loading="lazy" onerror="this.remove()"></div><div class="bd"><b>'+esc(x.client)+'</b><br><small style="color:var(--mute)">'+esc(x.type)+' · '+(x.photos?x.photos+' photos':'photos coming soon')+'</small><div class="pg"><i style="width:'+pct+'%"></i></div><span class="tag t-'+x.status+'">'+x.status+'</span>'
   +'<form class="lk" data-lf="'+x.id+'"><input class="in" name="link" type="url" inputmode="url" placeholder="Paste Google Photos link" value="'+esc(x.link||'')+'"><button class="btn sm g" type="submit">Save</button></form>'
   +'<div class="act">'+(has?'<a class="btn sm g" href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Open album</a>':'')+'<button class="btn sm wa" data-wa="'+x.id+'"'+(has&&to?'':' disabled')+'>Send on WhatsApp</button></div>'
-  +'<small style="display:block;color:var(--mute);margin-top:8px">'+(!has?'Add the album link to send.':!to?'Add a valid phone number in Bookings.':'To '+(CFG.testWhatsapp?'your test number '+mask(to):'+'+to))+(x.sent?' · Sent '+fd(x.sent):'')+'</small></div></div>'}).join('')+'</div>';
+  +'<small style="display:block;color:var(--mute);margin-top:8px">'+(!has?'Add the album link to send.':!to?'Add a valid phone number in Bookings.':'To '+(CFG.test?'your test number '+masked():'+'+to))+(x.sent?' · Sent '+fd(x.sent):'')+'</small></div></div>'}).join('')+'</div>';
 }
 function clients(d){var m={};d.bookings.forEach(function(x){var c=m[x.client]||(m[x.client]={name:x.client,phone:x.phone,n:0,total:0,paid:0,last:''});c.n++;c.total+=x.amount;c.paid+=x.paid;if(x.date>c.last)c.last=x.date});return Object.keys(m).map(function(k){return m[k]})}
 function vClients(d){
@@ -236,7 +236,7 @@ function vInvoices(d){
  return hdr('Invoices','Track payments','')+'<div class="pn"><table><thead><tr><th>No.</th><th>Client</th><th>Date</th><th>Total</th><th>Received</th><th>Status</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
 }
 function vSettings(d){
- return hdr('Settings','Studio details','')+'<div class="pn"><form class="fm" id="sf"><label>Studio name<input class="in" name="name" value="'+esc(d.studio.name)+'"></label><label>Phone<input class="in" name="phone" value="'+esc(d.studio.phone)+'"></label><label>Location<input class="in" name="place" value="'+esc(d.studio.place)+'"></label><button class="btn" type="submit">Save</button></form></div><div class="pn"><h4>WhatsApp test mode</h4><p style="color:var(--mute)">'+(CFG.testWhatsapp?'On — all client messages go to '+mask(CFG.testWhatsapp)+'. To send to real clients, remove the TEST_WHATSAPP secret in Cloudflare.':'Off — messages go to each client\'s own number.')+'</p></div><div class="pn"><h4>Demo data</h4><p style="color:var(--mute);margin-bottom:12px">Everything here is stored only in this browser.</p><button class="btn r sm" id="reset">Reset demo data</button></div>';
+ return hdr('Settings','Studio details','')+'<div class="pn"><form class="fm" id="sf"><label>Studio name<input class="in" name="name" value="'+esc(d.studio.name)+'"></label><label>Phone<input class="in" name="phone" value="'+esc(d.studio.phone)+'"></label><label>Location<input class="in" name="place" value="'+esc(d.studio.place)+'"></label><button class="btn" type="submit">Save</button></form></div><div class="pn"><h4>WhatsApp test mode</h4><p style="color:var(--mute)">'+(CFG.test?'On — all client messages go to '+masked()+'. To send to real clients, remove the TEST_WHATSAPP secret in Cloudflare.':'Off — messages go to each client\'s own number.')+'</p></div><div class="pn"><h4>Demo data</h4><p style="color:var(--mute);margin-bottom:12px">Everything here is stored only in this browser.</p><button class="btn r sm" id="reset">Reset demo data</button></div>';
 }
 function newModal(){
  $('#layer').innerHTML='<div class="ov" data-close><div class="modal"><h3>New booking</h3><p class="mute">Add a shoot to your calendar.</p><form id="nf"><input class="in" name="client" placeholder="Client name" required><input class="in" name="phone" placeholder="Phone" required><select class="in" name="type">'+TYPES.map(function(t){return '<option>'+t+'</option>'}).join('')+'</select><input class="in" type="date" name="date" value="'+off(7)+'" required><input class="in" name="place" placeholder="Location"><input class="in" type="number" min="0" name="amount" placeholder="Amount ₹" required><button class="btn" type="submit">Add booking</button></form></div></div>';
@@ -253,7 +253,7 @@ function bindView(v,d){
  $$('[data-lf]').forEach(function(f){f.onsubmit=function(e){e.preventDefault();var v=f.link.value.trim(),x=find(f.getAttribute('data-lf'));
   if(v&&!okLink(v)){toast('Use a Google Photos share link (photos.app.goo.gl)');return}x.link=v;save();route();toast(v?'Link saved':'Link removed')}});
  $$('[data-wa]').forEach(function(b){b.onclick=function(){var x=find(b.getAttribute('data-wa')),to=target(x);if(!okLink(x.link||'')||!to)return;
-  window.open('https://wa.me/'+to+'?text='+encodeURIComponent(waMessage(x)),'_blank','noopener');x.sent=iso(new Date());save();route()}});
+  window.open('/api/wa?to='+encodeURIComponent(CFG.test?'':to)+'&text='+encodeURIComponent(waMessage(x)),'_blank','noopener');x.sent=iso(new Date());save();route()}});
  var sf=$('#sf');if(sf)sf.onsubmit=function(e){e.preventDefault();var f=new FormData(sf),d=db();d.studio={name:f.get('name'),phone:f.get('phone'),place:f.get('place')};save();route();toast('Saved')};
  var rs=$('#reset');if(rs)rs.onclick=function(){if(confirm('Reset all demo data?')){set('db',seed());route();toast('Demo data reset')}};
 }
