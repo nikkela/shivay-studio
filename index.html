@@ -2,131 +2,309 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Shivay Studio — Photography & Cinematography, Ranivara, Rajasthan</title>
-<meta name="description" content="Shivay Studio, Ranivara (Rajasthan): videography, cinematography, photography and every kind of shoot — weddings, events, films, products.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="Shivay Studio, Ranivara (Rajasthan): wedding photography, videography, cinematography, drone and product shoots.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Shivay Studio — Every moment. Shot beautifully.">
+<meta property="og:description" content="Photography, videography and cinematography in Ranivara, Rajasthan.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <style>
-:root{--bg:#fbfbfd;--fg:#1d1d1f;--mute:#6e6e73;--card:#fff;--line:#d2d2d7;--blue:#0071e3;--dark:#000}
-@media(prefers-color-scheme:dark){:root{--bg:#000;--fg:#f5f5f7;--mute:#a1a1a6;--card:#1c1c1e;--line:#3a3a3c;--blue:#2997ff}}
+:root{--bg:#fbfbfd;--fg:#1d1d1f;--mute:#6e6e73;--card:#fff;--line:#d2d2d7;--blue:#0071e3;--soft:#f5f5f7}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--fg:#f5f5f7;--mute:#a1a1a6;--card:#1c1c1e;--line:#3a3a3c;--blue:#2997ff;--soft:#161618}}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.47;-webkit-font-smoothing:antialiased}
-nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:0 max(16px,calc(50% - 540px));height:48px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);font-size:13px}
-nav b{font-weight:600;font-size:15px;letter-spacing:-.01em}
-nav div{display:flex;gap:22px}
-nav a{color:var(--fg);text-decoration:none;opacity:.8}
-nav a:hover{opacity:1}
-@media(max-width:640px){nav div a:not(.cta){display:none}}
-section{padding:96px 16px;text-align:center}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue)}
+img{display:block;max-width:100%}
+/* nav */
+nav.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:0 max(16px,calc(50% - 540px));height:52px;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);font-size:13px}
+.brand{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
+.brand svg{width:28px;height:28px;color:var(--fg)}
+nav.top div{display:flex;gap:24px;align-items:center}
+nav.top div a{color:var(--fg);text-decoration:none;opacity:.8}
+nav.top div a:hover{opacity:1}
+nav.top .pill{background:var(--blue);color:#fff;opacity:1;padding:5px 15px;border-radius:980px}
+@media(max-width:700px){nav.top div a:not(.pill){display:none}}
+/* type */
+section.s{padding:110px 16px;text-align:center}
 .w{max-width:1080px;margin:auto}
-h1{font-size:clamp(40px,8vw,88px);font-weight:700;letter-spacing:-.035em;line-height:1.05}
-h2{font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
-.sub{font-size:clamp(19px,2.4vw,28px);color:var(--mute);font-weight:500;margin-top:16px;letter-spacing:-.01em}
+h1{font-size:clamp(44px,8.5vw,96px);font-weight:700;letter-spacing:-.04em;line-height:1.02}
+h2{font-size:clamp(34px,5.4vw,60px);font-weight:700;letter-spacing:-.035em;line-height:1.06}
+.eyebrow{font-size:clamp(15px,1.6vw,19px);font-weight:600;color:var(--mute);margin-bottom:10px;letter-spacing:-.01em}
+.sub{font-size:clamp(19px,2.3vw,26px);color:var(--mute);font-weight:500;margin-top:14px;letter-spacing:-.015em}
 .grad{background:linear-gradient(90deg,#ff9f0a,#ff375f,#bf5af2,#0a84ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .btns{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 24px;border-radius:980px;background:var(--blue);color:#fff;text-decoration:none;font-size:17px}
+.btn{display:inline-block;padding:13px 26px;border-radius:980px;background:var(--blue);color:#fff;text-decoration:none;font-size:17px;border:0;cursor:pointer}
 .btn.o{background:none;color:var(--blue);border:1px solid var(--blue)}
-.hero{background:radial-gradient(ellipse at 50% 120%,rgba(10,132,255,.25),transparent 60%),radial-gradient(ellipse at 20% 0,rgba(191,90,242,.18),transparent 50%);padding-top:120px;min-height:88vh;display:flex;align-items:center}
-.hero .w{width:100%}
-.lens{width:min(260px,60vw);aspect-ratio:1;margin:56px auto 0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5e5ce6 0,#1c1c3a 35%,#000 70%);box-shadow:0 0 0 10px #1c1c1e,0 0 0 12px #3a3a3c,0 30px 80px rgba(94,92,230,.4);position:relative}
-.lens::after{content:"";position:absolute;inset:38%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff9,#0a84ff55 40%,#000 75%)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:56px;text-align:left}
-.card{background:var(--card);border-radius:28px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:transform .3s}
-.card:hover{transform:scale(1.02)}
-.card i{font-style:normal;font-size:40px;display:block;margin-bottom:12px}
-.card h3{font-size:24px;letter-spacing:-.02em;margin-bottom:6px}
-.card p{color:var(--mute);font-size:17px}
-.dark{background:#000;color:#f5f5f7}
-.dark .sub,.dark .card p{color:#a1a1a6}
-.dark .card{background:#1c1c1e;box-shadow:none}
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:56px;text-align:left}
-.step{counter-increment:s;padding:28px;border-radius:24px;background:#1c1c1e}
-.step::before{content:counter(s);font-size:56px;font-weight:700;display:block;line-height:1;margin-bottom:12px;background:linear-gradient(135deg,#ff9f0a,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
-.step h3{font-size:21px;margin-bottom:4px}
-.step p{color:#a1a1a6;font-size:16px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
-.tile{aspect-ratio:4/3;border-radius:28px;display:flex;align-items:flex-end;padding:24px;color:#fff;font-size:22px;font-weight:600;text-align:left;letter-spacing:-.01em}
-.t1{background:linear-gradient(135deg,#ff9f0a,#ff375f)}.t2{background:linear-gradient(135deg,#5e5ce6,#0a84ff)}.t3{background:linear-gradient(135deg,#30d158,#0a84ff)}.t4{background:linear-gradient(135deg,#bf5af2,#ff375f)}.t5{background:linear-gradient(135deg,#ff453a,#ff9f0a)}.t6{background:linear-gradient(135deg,#1c1c1e,#5e5ce6)}
-.note{font-size:14px;color:var(--mute);margin-top:20px}
-.price{font-size:44px;font-weight:700;letter-spacing:-.03em;margin:8px 0}
-.price small{font-size:17px;color:var(--mute);font-weight:500}
-ul{list-style:none;padding:0;margin-top:14px;color:var(--mute);font-size:17px}
-li{padding:6px 0;border-top:1px solid var(--line)}
-footer{padding:32px 16px;text-align:center;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
-.rv{opacity:0;transform:translateY(24px);transition:.8s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.btn.lt{background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.dark{background:#000;color:#f5f5f7;--mute:#a1a1a6;--card:#1c1c1e;--line:#3a3a3c}
+/* photo frame: gradient shows if image can't load */
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--g1,#5e5ce6),var(--g2,#0a84ff))}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* hero */
+.hero{position:relative;min-height:min(92vh,900px);display:flex;align-items:flex-end;justify-content:center;color:#fff;padding:0 16px 88px;text-align:center;--g1:#1c1c3a;--g2:#000}
+.hero .ph{position:absolute;inset:0}
+.hero .ph img{animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0,rgba(0,0,0,.1) 35%,rgba(0,0,0,.75) 100%)}
+.hero .w{position:relative;z-index:1}
+.hero .eyebrow{color:rgba(255,255,255,.8)}
+.hero .sub{color:rgba(255,255,255,.85)}
+.hero .grad{background-image:linear-gradient(90deg,#ffd60a,#ff9f0a,#ff375f,#bf5af2)}
+/* gallery */
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.chip{border:1px solid var(--line);background:none;padding:7px 18px;border-radius:980px;cursor:pointer;font-size:15px}
+.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.mason{columns:3 260px;column-gap:14px;margin-top:28px;text-align:left}
+.tile{break-inside:avoid;margin-bottom:14px;border-radius:22px;border:0;padding:0;width:100%;cursor:zoom-in;display:block;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.tile:hover{transform:scale(1.015)}
+.tile span{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;color:#fff;font-weight:600;font-size:17px;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent);z-index:1}
+.tile span small{display:block;font-weight:500;opacity:.8;font-size:13px}
+/* services bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px;text-align:left}
+.svc{border-radius:28px;min-height:380px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;grid-column:span 2}
+.svc.wide{grid-column:span 3;min-height:440px}
+.svc.full{grid-column:span 6;min-height:340px}
+.svc::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0,rgba(0,0,0,.25) 55%,rgba(0,0,0,.05) 100%)}
+.svc>*:not(img){position:relative;z-index:1}
+.svc b{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
+.svc h3{font-size:clamp(26px,3vw,34px);letter-spacing:-.03em;line-height:1.1;margin:6px 0 8px}
+.svc p{color:rgba(255,255,255,.82);font-size:17px;max-width:34ch}
+.svc img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.svc:hover img{transform:scale(1.05)}
+@media(max-width:900px){.svc,.svc.wide{grid-column:span 3;min-height:340px}.svc.full{grid-column:span 6}}
+@media(max-width:600px){.svc,.svc.wide,.svc.full{grid-column:span 6;min-height:320px}}
+/* process */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:56px;text-align:left}
+.step{counter-increment:s;padding:28px;border-radius:24px;background:var(--card)}
+.step::before{content:counter(s);font-size:52px;font-weight:700;display:block;line-height:1;margin-bottom:12px;background:linear-gradient(135deg,#ff9f0a,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-size:21px;margin-bottom:4px;letter-spacing:-.02em}
+.step p{color:var(--mute);font-size:16px}
+/* packages */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:56px;text-align:left}
+.card{background:var(--card);border-radius:28px;padding:32px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.card.hl{outline:2px solid var(--blue)}
+.card h3{font-size:22px;letter-spacing:-.02em}
+.card .tagl{display:inline-block;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:6px}
+.price{font-size:44px;font-weight:700;letter-spacing:-.035em;margin:8px 0}.price small{font-size:16px;color:var(--mute);font-weight:500}
+.card ul{list-style:none;padding:0;margin-top:12px;color:var(--mute);font-size:16px}.card li{padding:8px 0;border-top:1px solid var(--line)}
+.card li::before{content:"✓  ";color:var(--blue)}
+/* reviews */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.stat b{display:block;white-space:nowrap;font-size:clamp(28px,6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.stat span{color:var(--mute);font-size:15px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;text-align:left}
+.rev{background:var(--card);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:18px}
+.rev .stars{color:#ff9f0a;letter-spacing:2px;font-size:15px}
+.rev q{font-size:21px;line-height:1.35;letter-spacing:-.02em;font-weight:500;quotes:"“" "”"}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rev .av{width:44px;height:44px;border-radius:50%;flex:none}
+.rev .who b{display:block;font-size:15px}.rev .who small{color:var(--mute);font-size:13px}
+@media(max-width:860px){.reviews{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:48px -16px 0;padding:0 16px 8px;scrollbar-width:none}.reviews::-webkit-scrollbar{display:none}.rev{flex:0 0 84%;scroll-snap-align:center}}
+/* booking */
+form.book{max-width:560px;margin:40px auto 0;display:grid;gap:12px;text-align:left}
+form.book .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){form.book .two{grid-template-columns:1fr}}
+.field{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:16px}
+.field:focus{outline:2px solid var(--blue);border-color:transparent}
+form.book .btn{width:100%}
+.note{font-size:14px;color:var(--mute);margin-top:18px}
+footer.f{padding:40px 16px calc(32px + env(safe-area-inset-bottom));text-align:center;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+footer.f .brand{justify-content:center;margin-bottom:10px}
+/* lightbox + toast */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px}
+.ov .big{width:min(1000px,92vw);height:min(80vh,680px);border-radius:20px}
+.ov .big img{object-fit:contain;background:#000}
+.ov .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-size:15px}
+.ov button{position:absolute;background:none;border:0;color:#fff;cursor:pointer}
+.ov .x{top:14px;right:18px;font-size:34px}.ov .nv{top:50%;transform:translateY(-50%);font-size:46px;padding:12px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#1d1d1f;color:#fff;padding:12px 22px;border-radius:980px;font-size:15px;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+/* reveal (named "show" so it never collides with other classes) */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero .ph img{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav><b>Shivay Studio</b><div><a href="#services">Services</a><a href="#process">Process</a><a href="#work">Work</a><a href="#packages">Packages</a><a class="cta" href="#contact" style="color:var(--blue);opacity:1">Book</a></div></nav>
 
-<section class="hero"><div class="w">
-<p class="sub" style="margin:0 0 12px">Ranivara, Rajasthan</p>
+<nav class="top">
+<a class="brand" href="#top" aria-label="Shivay Studio home"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>Shivay Studio</a>
+<div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#reviews">Reviews</a><a class="pill" href="#book">Book now</a></div>
+</nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 100 100"><path d="M50 40.5L58.23 45.25L77.73 53.9A28 28 0 0 0 67.24 27.94Z" fill="#ff9f0a" fill-opacity=".9"/><path d="M58.23 45.25L58.23 54.75L60.49 75.96A28 28 0 0 0 77.73 53.9Z" fill="#ff375f" fill-opacity=".9"/><path d="M58.23 54.75L50 59.5L32.76 72.06A28 28 0 0 0 60.49 75.96Z" fill="#bf5af2" fill-opacity=".9"/><path d="M50 59.5L41.77 54.75L22.27 46.1A28 28 0 0 0 32.76 72.06Z" fill="#5e5ce6" fill-opacity=".9"/><path d="M41.77 54.75L41.77 45.25L39.51 24.04A28 28 0 0 0 22.27 46.1Z" fill="#0a84ff" fill-opacity=".9"/><path d="M41.77 45.25L50 40.5L67.24 27.94A28 28 0 0 0 39.51 24.04Z" fill="#30d158" fill-opacity=".9"/><circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="3.2"/></symbol></svg>
+
+<header class="hero" id="top">
+<div class="ph" data-photo="hero"></div>
+<div class="w">
+<p class="eyebrow">Shivay Studio · Ranivara, Rajasthan</p>
 <h1>Every moment.<br><span class="grad">Shot beautifully.</span></h1>
-<p class="sub">Photography. Videography. Cinematography.<br>Whatever you want to capture — we shoot it.</p>
-<div class="btns"><a class="btn" href="#contact">Book a shoot</a><a class="btn o" href="#process">How we work</a></div>
-<div class="lens" role="img" aria-label="Camera lens"></div>
+<p class="sub">Photography. Videography. Cinematography.</p>
+<div class="btns"><a class="btn" href="#book">Book a shoot</a><a class="btn lt" href="#work">See our work</a></div>
+</div>
+</header>
+
+<section class="s" id="work"><div class="w">
+<p class="eyebrow rv">Portfolio</p>
+<h2 class="rv">Our work.</h2>
+<p class="sub rv">Tap any photo to view it full screen.</p>
+<div class="chips" id="chips"></div>
+<div class="mason" id="mason"></div>
 </div></section>
 
-<section id="services"><div class="w">
+<section class="s dark" id="services"><div class="w">
+<p class="eyebrow rv">Services</p>
 <h2 class="rv">All types of shooting.</h2>
 <p class="sub rv">One studio. Every kind of story.</p>
-<div class="grid">
-<div class="card rv"><i>📷</i><h3>Photography</h3><p>Wedding, pre-wedding, portraits, family, baby, fashion and product photos.</p></div>
-<div class="card rv"><i>🎥</i><h3>Videography</h3><p>Events, weddings, birthdays, promotions and social media reels.</p></div>
-<div class="card rv"><i>🎬</i><h3>Cinematography</h3><p>Cinematic films, short films, music videos and ads with a film look.</p></div>
-<div class="card rv"><i>🚁</i><h3>Drone & Outdoor</h3><p>Aerial views for weddings, property, villages and landscapes.</p></div>
-<div class="card rv"><i>🏢</i><h3>Business & Product</h3><p>Shop, brand, catalogue and corporate shoots that help you sell.</p></div>
-<div class="card rv"><i>✂️</i><h3>Editing & Albums</h3><p>Colour grading, highlights, reels and printed albums.</p></div>
-</div></div></section>
-
-<section id="process" class="dark"><div class="w">
-<h2 class="rv">From call to final cut.</h2>
-<p class="sub rv">This is how we deliver — simple and clear.</p>
-<div class="steps">
-<div class="step rv"><h3>Talk</h3><p>Call or WhatsApp us. Tell us the date, place and what you need.</p></div>
-<div class="step rv"><h3>Plan</h3><p>We pick the package, crew and equipment, and fix the price.</p></div>
-<div class="step rv"><h3>Shoot</h3><p>Our team arrives on time with cameras, lights and backup gear.</p></div>
-<div class="step rv"><h3>Edit</h3><p>Colour, music and cuts. You see a preview and ask for changes.</p></div>
-<div class="step rv"><h3>Deliver</h3><p>Final photos, films and albums on pen drive or online link.</p></div>
-</div></div></section>
-
-<section id="work"><div class="w">
-<h2 class="rv">Our work.</h2>
-<p class="sub rv">Sample categories — real photos and films go here.</p>
-<div class="tiles">
-<div class="tile t1 rv">Weddings</div><div class="tile t2 rv">Pre-wedding</div><div class="tile t3 rv">Outdoor & Drone</div>
-<div class="tile t4 rv">Portraits & Fashion</div><div class="tile t5 rv">Events & Birthdays</div><div class="tile t6 rv">Films & Ads</div>
-</div>
-<p class="note">Demo layout. Replace each tile with your own photo or YouTube/Instagram link.</p>
+<div class="bento" id="bento"></div>
 </div></section>
 
-<section id="packages" class="dark"><div class="w">
+<section class="s" id="process"><div class="w">
+<p class="eyebrow rv">How we work</p>
+<h2 class="rv">From call to final cut.</h2>
+<p class="sub rv">Simple, clear, on time.</p>
+<div class="steps">
+<div class="step rv"><h3>Talk</h3><p>Call or WhatsApp. Tell us the date, place and what you need.</p></div>
+<div class="step rv"><h3>Plan</h3><p>We pick the package, crew and gear, and fix the price.</p></div>
+<div class="step rv"><h3>Shoot</h3><p>Our team arrives on time with cameras, lights and backup.</p></div>
+<div class="step rv"><h3>Edit</h3><p>Colour, music and cuts. You preview and ask for changes.</p></div>
+<div class="step rv"><h3>Deliver</h3><p>Photos, films and albums on pen drive or online link.</p></div>
+</div></div></section>
+
+<section class="s dark" id="packages"><div class="w">
+<p class="eyebrow rv">Pricing</p>
 <h2 class="rv">Simple packages.</h2>
-<p class="sub rv">Sample prices — change them to yours.</p>
+<p class="sub rv">Clear pricing, no surprises.</p>
 <div class="grid">
 <div class="card rv"><h3>Basic</h3><div class="price">₹5,000<small> /shoot</small></div><ul><li>1 photographer</li><li>Up to 4 hours</li><li>100 edited photos</li></ul></div>
-<div class="card rv"><h3>Standard</h3><div class="price">₹15,000<small> /event</small></div><ul><li>Photo + video team</li><li>Full day coverage</li><li>Highlight video + album</li></ul></div>
+<div class="card hl rv"><span class="tagl">Most popular</span><h3>Standard</h3><div class="price">₹15,000<small> /event</small></div><ul><li>Photo + video team</li><li>Full day coverage</li><li>Highlight video + album</li></ul></div>
 <div class="card rv"><h3>Cinematic</h3><div class="price">₹40,000<small> +</small></div><ul><li>Cinema camera crew</li><li>Drone footage</li><li>Film, teaser and reels</li></ul></div>
 </div></div></section>
 
-<section id="contact"><div class="w">
-<h2 class="rv">Let's shoot something great.</h2>
-<p class="sub rv">Shivay Studio · Ranivara, Rajasthan</p>
-<div class="btns">
-<a class="btn" id="wa" href="https://wa.me/918302615834?text=Hello%20Shivay%20Studio%2C%20I%20want%20to%20book%20a%20shoot." target="_blank" rel="noopener">WhatsApp us</a>
-<a class="btn o" href="tel:+918302615834">Call now</a>
+<section class="s" id="reviews"><div class="w">
+<p class="eyebrow rv">Reviews</p>
+<h2 class="rv">Loved by clients.</h2>
+<div class="stats">
+<div class="stat rv"><b class="grad">500+</b><span>Shoots done</span></div>
+<div class="stat rv"><b class="grad">4.9★</b><span>Average rating</span></div>
+<div class="stat rv"><b class="grad">7 days</b><span>Typical delivery</span></div>
 </div>
-<p class="note">Replace 918302615834 with your real number (country code + number) in index.html.</p>
+<div class="reviews">
+<figure class="rev rv"><div class="stars" aria-label="5 stars">★★★★★</div><q>Our wedding photos feel like a movie. Everyone asked who shot them.</q><figcaption class="who"><span class="av" style="background:linear-gradient(135deg,#ff9f0a,#ff375f)"></span><div><b>Pooja & Rahul</b><small>Wedding · Udaipur</small></div></figcaption></figure>
+<figure class="rev rv"><div class="stars" aria-label="5 stars">★★★★★</div><q>On time, calm and creative. Delivered everything in one week.</q><figcaption class="who"><span class="av" style="background:linear-gradient(135deg,#5e5ce6,#0a84ff)"></span><div><b>Mahendra Singh</b><small>Birthday · Ranivara</small></div></figcaption></figure>
+<figure class="rev rv"><div class="stars" aria-label="5 stars">★★★★★</div><q>Our product sales went up after the new catalogue photos.</q><figcaption class="who"><span class="av" style="background:linear-gradient(135deg,#30d158,#0a84ff)"></span><div><b>Shree Textiles</b><small>Catalogue · Jalore</small></div></figcaption></figure>
+</div>
 </div></section>
 
-<footer>© <span id="y"></span> Shivay Studio, Ranivara, Rajasthan. All rights reserved.</footer>
+<section class="s dark" id="book"><div class="w">
+<p class="eyebrow rv">Booking</p>
+<h2 class="rv">Book your shoot.</h2>
+<p class="sub rv">Tell us what you need. We reply the same day.</p>
+<form class="book" id="bookForm">
+<div class="two"><input class="field" name="client" placeholder="Your name" required autocomplete="name"><input class="field" name="phone" placeholder="Phone / WhatsApp" required inputmode="tel" autocomplete="tel"></div>
+<div class="two"><select class="field" name="type"><option>Wedding</option><option>Pre-wedding</option><option>Birthday / Event</option><option>Portrait</option><option>Product / Business</option><option>Film / Ad</option></select><input class="field" type="date" name="date" required></div>
+<input class="field" name="place" placeholder="Location (village / city)">
+<textarea class="field" name="note" rows="3" placeholder="Anything else we should know?"></textarea>
+<button class="btn" type="submit">Send on WhatsApp</button>
+</form>
+<p class="note">Or call <a href="tel:+918302615834">+91 83026 15834</a> · <a href="https://wa.me/918302615834" target="_blank" rel="noopener">WhatsApp</a></p>
+</div></section>
+
+<footer class="f">
+<a class="brand" href="#top"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>Shivay Studio</a>
+<p>Ranivara, Rajasthan · <a href="tel:+918302615834">+91 83026 15834</a></p>
+<p style="margin-top:6px">© <span id="y"></span> Shivay Studio. All rights reserved.</p>
+</footer>
+
+<div id="layer"></div>
+
 <script>
-document.getElementById('y').textContent=new Date().getFullYear();
-var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+(function(){
+/* ---------- photos: replace these with your own (any image URL or /photos/your-file.jpg) ---------- */
+var U=function(id,w){return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||1200)+'&q=72'};
+var PHOTOS={
+ hero:U('photo-1519741497674-611481863552',2000),
+ photography:U('photo-1516035069371-29a1b244cc32'),
+ videography:U('photo-1492684223066-81342ee5ff30'),
+ cinematography:U('photo-1485846234645-a62644f84728'),
+ drone:U('photo-1473968512647-3e447244af8f'),
+ business:U('photo-1523275335684-37898b6baf30'),
+ albums:U('photo-1452587925148-ce544e77e70d')
+};
+var GALLERY=[
+ ['Wedding','Varmala moment','photo-1511285560929-80b456fea0bc',320],
+ ['Pre-wedding','Golden hour','photo-1522673607200-164d1b6ce486',240],
+ ['Portrait','Studio light','photo-1438761681033-6461ffad8d80',340],
+ ['Product','Watch detail','photo-1523275335684-37898b6baf30',240],
+ ['Outdoor','Valley sunrise','photo-1469474968028-56623f02e42e',260],
+ ['Wedding','First look','photo-1520854221256-17451cc331bf',300],
+ ['Portrait','Candid smile','photo-1494790108377-be9c29b29330',300],
+ ['Outdoor','Drone view','photo-1473968512647-3e447244af8f',230],
+ ['Product','Catalogue shoot','photo-1505740420928-5e560c06d30e',260],
+ ['Wedding','Together','photo-1583939003579-730e3918a45a',330],
+ ['Outdoor','Mountain light','photo-1506905925346-21bda4d32df4',240],
+ ['Portrait','Classic portrait','photo-1507003211169-0a1dd7228f2d',320]
+];
+var SERVICES=[
+ ['photography','Photography','Wedding, pre-wedding, portraits, family, baby and fashion.',1],
+ ['videography','Videography','Events, birthdays, promotions and social media reels.',1],
+ ['cinematography','Cinematography','Cinematic films, music videos and ads.',0],
+ ['drone','Drone & Outdoor','Aerial views for weddings, property and landscapes.',0],
+ ['business','Business & Product','Shop, brand and catalogue shoots that help you sell.',0],
+ ['albums','Albums & Editing','Colour grading, highlights, reels and printed albums.',2]
+];
+var HUES=[[24,330],[260,210],[330,280],[200,150],[150,190],[10,40]];
+
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var g=function(i){var h=HUES[i%HUES.length];return '--g1:hsl('+h[0]+',80%,58%);--g2:hsl('+h[1]+',75%,40%)'};
+var img=function(src,alt,eager){return '<img src="'+esc(src)+'" alt="'+esc(alt)+'"'+(eager?' fetchpriority="high"':' loading="lazy"')+' decoding="async" onerror="this.remove()">'};
+
+$('[data-photo="hero"]').innerHTML=img(PHOTOS.hero,'Wedding couple',true);
+$('#bento').innerHTML=SERVICES.map(function(s,i){return '<div class="ph svc rv'+(s[3]===1?' wide':s[3]===2?' full':'')+'" style="'+g(i)+'">'+img(PHOTOS[s[0]],s[1])+'<b>0'+(i+1)+'</b><h3>'+s[1]+'</h3><p>'+s[2]+'</p></div>'}).join('');
+
+var CATS=['All','Wedding','Pre-wedding','Portrait','Product','Outdoor'],cat='All';
+function shown(){return GALLERY.map(function(p,i){return i}).filter(function(i){return cat==='All'||GALLERY[i][0]===cat})}
+function drawGallery(){
+ $('#chips').innerHTML=CATS.map(function(c){return '<button class="chip'+(c===cat?' on':'')+'" data-cat="'+c+'">'+c+'</button>'}).join('');
+ $('#mason').innerHTML=shown().map(function(i){var p=GALLERY[i];return '<button class="ph tile" data-i="'+i+'" style="height:'+p[3]+'px;'+g(i)+'" aria-label="'+esc(p[1])+'">'+img(U(p[2],800),p[1])+'<span>'+esc(p[1])+'<small>'+p[0]+'</small></span></button>'}).join('');
+}
+function lightbox(i){
+ var list=shown(),pos=list.indexOf(i);
+ function draw(){var p=GALLERY[list[pos]];$('#layer').innerHTML='<div class="ov" data-close><button class="x" data-close aria-label="Close">×</button><button class="nv" style="left:6px" data-nav="-1" aria-label="Previous">‹</button><div class="ph big" style="'+g(list[pos])+'">'+img(U(p[2],1800),p[1])+'</div><button class="nv" style="right:6px" data-nav="1" aria-label="Next">›</button><p class="cap">'+esc(p[1])+' · '+p[0]+'</p></div>'}
+ draw();
+ $('#layer').onclick=function(e){var n=e.target.getAttribute&&e.target.getAttribute('data-nav');if(n){pos=(pos+ +n+list.length)%list.length;draw();return}if(e.target.hasAttribute&&e.target.hasAttribute('data-close'))closeLayer()};
+}
+function closeLayer(){$('#layer').innerHTML='';$('#layer').onclick=null}
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape')closeLayer();
+ if($('#layer [data-nav]')&&(e.key==='ArrowRight'||e.key==='ArrowLeft'))$('#layer [data-nav="'+(e.key==='ArrowRight'?1:-1)+'"]').click();
+});
+document.addEventListener('click',function(e){
+ var c=e.target.closest&&e.target.closest('[data-cat]');if(c){cat=c.getAttribute('data-cat');drawGallery();return}
+ var p=e.target.closest&&e.target.closest('.tile');if(p)lightbox(+p.getAttribute('data-i'));
+});
+function toast(t){var e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(function(){e.remove()},2600)}
+
+/* booking: opens WhatsApp with the details, and saves a copy for the studio dashboard (/login) on this device */
+$('#bookForm').onsubmit=function(e){
+ e.preventDefault();var f=new FormData(e.target);
+ var msg='Hello Shivay Studio, I want to book a shoot.\nName: '+f.get('client')+'\nPhone: '+f.get('phone')+'\nShoot: '+f.get('type')+'\nDate: '+f.get('date')+'\nPlace: '+(f.get('place')||'-')+(f.get('note')?'\nNote: '+f.get('note'):'');
+ try{var d=JSON.parse(localStorage.getItem('shivay_db')||'null');if(d&&d.bookings){d.bookings.push({id:d.next++,client:f.get('client'),phone:f.get('phone'),type:f.get('type'),date:f.get('date'),place:f.get('place')||'—',amount:0,paid:0,status:'New'});localStorage.setItem('shivay_db',JSON.stringify(d))}}catch(x){}
+ window.open('https://wa.me/918302615834?text='+encodeURIComponent(msg),'_blank','noopener');
+ e.target.reset();toast('Opening WhatsApp…');
+};
+
+$('#y').textContent=new Date().getFullYear();
+drawGallery();
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}})},{threshold:.08}):null;
+$$('.rv').forEach(function(el){io?io.observe(el):el.classList.add('show')});
+})();
 </script>
 </body>
 </html>
