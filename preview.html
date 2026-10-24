@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your new website — Shivay Studio</title>
+<meta name="description" content="Preview of the Shivay Studio website and studio dashboard.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Shivay Studio — your new website is ready to preview">
+<meta property="og:description" content="Website + studio dashboard. Open to see how it looks on phone and computer.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#fbfbfd;--fg:#1d1d1f;--mute:#6e6e73;--card:#fff;--line:#d2d2d7;--blue:#0071e3;--soft:#f5f5f7}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--fg:#f5f5f7;--mute:#a1a1a6;--card:#1c1c1e;--line:#3a3a3c;--blue:#2997ff;--soft:#161618}}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.47;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+.w{max-width:1100px;margin:auto;padding:0 16px}
+section{padding:88px 0;text-align:center}
+.eyebrow{font-size:17px;font-weight:600;color:var(--mute)}
+h1{font-size:clamp(40px,7.5vw,84px);font-weight:700;letter-spacing:-.04em;line-height:1.03;margin-top:8px}
+h2{font-size:clamp(32px,5vw,54px);font-weight:700;letter-spacing:-.035em;line-height:1.08}
+.sub{font-size:clamp(18px,2.2vw,24px);color:var(--mute);font-weight:500;margin-top:14px;letter-spacing:-.015em}
+.grad{background:linear-gradient(90deg,#ff9f0a,#ff375f,#bf5af2,#0a84ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.icon{width:84px;height:84px;border-radius:19px;box-shadow:0 12px 34px rgba(0,0,0,.22);display:block;margin:0 auto 22px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:13px 26px;border-radius:980px;background:var(--blue);color:#fff;text-decoration:none;font-size:17px}
+.btn.o{background:none;color:var(--blue);border:1px solid var(--blue)}
+.btn.wa{background:#25d366}
+/* devices */
+.stage{position:relative;margin:56px auto 0;max-width:1000px;padding-bottom:40px}
+.laptop{width:86%;margin-right:auto}
+.screen{position:relative;border-radius:18px 18px 0 0;background:#0b0b0d;padding:2.2% 2.2% 0;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.view{position:relative;overflow:hidden;background:#000;border-radius:6px 6px 0 0}
+.view iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;pointer-events:none}
+.laptop .view{aspect-ratio:16/10}
+.base{height:16px;margin:0 -6%;background:linear-gradient(#d1d1d6,#a1a1a6);border-radius:0 0 18px 18px;position:relative}
+.base::before{content:"";position:absolute;left:42%;right:42%;top:0;height:6px;background:#8e8e93;border-radius:0 0 8px 8px}
+.phone{position:absolute;right:0;bottom:0;width:27%;border-radius:15%/7%;background:#0b0b0d;padding:3.2%;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.phone .view{aspect-ratio:390/844;border-radius:11%/5.2%}
+.phone.solo{position:relative;width:min(300px,78vw);margin:0 auto;right:auto}
+.cap{font-size:14px;color:var(--mute);margin-top:12px}
+/* features */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:48px;text-align:left}
+.card{background:var(--card);border-radius:26px;padding:28px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.card i{font-style:normal;font-size:34px;display:block;margin-bottom:10px}
+.card h3{font-size:21px;letter-spacing:-.02em;margin-bottom:4px}
+.card p{color:var(--mute);font-size:16px}
+.alt{background:var(--soft)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-align:left;margin-top:48px}
+.split ul{list-style:none;padding:0;font-size:18px}
+.split li{padding:12px 0;border-top:1px solid var(--line)}
+.split li b{display:block;font-size:19px}
+.split li span{color:var(--mute);font-size:16px}
+@media(max-width:780px){.split{grid-template-columns:1fr;gap:32px}.laptop{width:88%}.base{margin:0 -4%}.phone{width:30%;right:0;bottom:-4%}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px;text-align:left;counter-reset:s}
+.step{counter-increment:s;background:var(--card);border-radius:24px;padding:26px}
+.step::before{content:counter(s);display:block;font-size:44px;font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#ff9f0a,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-size:19px}.step p{color:var(--mute);font-size:15px}
+footer{padding:36px 16px;text-align:center;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<section><div class="w">
+<img class="icon" src="/apple-touch-icon.png" alt="Shivay Studio logo">
+<p class="eyebrow">Shivay Studio · Ranivara, Rajasthan</p>
+<h1>Your new website.<br><span class="grad">Ready to go live.</span></h1>
+<p class="sub">A premium website for your clients, and a dashboard for your studio. Works on every phone and computer.</p>
+<div class="btns"><a class="btn" href="/" target="_blank" rel="noopener">Open the website</a><a class="btn o" href="#dashboard">See the dashboard</a></div>
+<div class="stage">
+ <div class="laptop"><div class="screen"><div class="view" data-src="/" data-w="1280"></div></div><div class="base"></div></div>
+ <div class="phone"><div class="view" data-src="/" data-w="390"></div></div>
+</div>
+<p class="cap">Live preview — this is the real website.</p>
+</div></section>
+
+<section class="alt"><div class="w">
+<p class="eyebrow">What your clients see</p>
+<h2>Looks like a big brand.</h2>
+<p class="sub">Clean Apple-style design that makes your work shine.</p>
+<div class="grid">
+<div class="card"><i>📸</i><h3>Portfolio gallery</h3><p>Weddings, pre-wedding, portraits, products — full-screen photo viewer.</p></div>
+<div class="card"><i>🎬</i><h3>All your services</h3><p>Photography, videography, cinematography, drone, albums.</p></div>
+<div class="card"><i>💰</i><h3>Clear packages</h3><p>Prices shown upfront, so clients come ready to book.</p></div>
+<div class="card"><i>⭐</i><h3>Reviews</h3><p>Ratings and happy-client stories build trust.</p></div>
+<div class="card"><i>💬</i><h3>Book on WhatsApp</h3><p>Client fills a short form — it lands on your WhatsApp with all details.</p></div>
+<div class="card"><i>📱</i><h3>Perfect on phones</h3><p>Fast, smooth and easy to use on any mobile.</p></div>
+</div>
+</div></section>
+
+<section id="dashboard"><div class="w">
+<p class="eyebrow">What you get</p>
+<h2>Your studio, in your pocket.</h2>
+<p class="sub">A private dashboard to run the business.</p>
+<div class="split">
+ <div><div class="phone solo"><div class="view" data-src="/login#/overview" data-w="390" data-auth="1"></div></div><p class="cap" style="text-align:center">Studio dashboard on phone</p></div>
+ <ul>
+ <li><b>📅 Bookings & calendar</b><span>Every shoot, date and place in one view.</span></li>
+ <li><b>📥 Enquiries from website</b><span>New enquiries show up — confirm in one tap.</span></li>
+ <li><b>🖼️ Deliver photos on WhatsApp</b><span>Send the Google Photos album in one tap; the client saves it to their own account.</span></li>
+ <li><b>₹ Payments & invoices</b><span>See what is paid and what is pending.</span></li>
+ <li><b>👥 Clients</b><span>Full history of every client.</span></li>
+ </ul>
+</div>
+</div></section>
+
+<section class="alt"><div class="w">
+<p class="eyebrow">Going live</p>
+<h2>Simple, 3 steps.</h2>
+<div class="steps">
+<div class="step"><h3>Check the preview</h3><p>Open the website and tell us any changes — photos, prices, text.</p></div>
+<div class="step"><h3>Send your photos</h3><p>Share your best work and logo choice. We put them in.</p></div>
+<div class="step"><h3>Go live</h3><p>Your website goes online with your own link.</p></div>
+</div>
+<div class="btns"><a class="btn" href="/" target="_blank" rel="noopener">Open the website</a><a class="btn o" href="/login" target="_blank" rel="noopener">Try the dashboard</a></div>
+<p class="cap">Dashboard demo: tap “One-click demo login”.</p>
+</div></section>
+
+<footer>Website preview for Shivay Studio · Made by <a href="https://www.absabonline.in" target="_blank" rel="noopener">AbSabOnline</a></footer>
+
+<script>
+(function(){
+/* dashboard preview is a demo: sign in the demo session for the iframe (same site, this browser only) */
+try{if(document.querySelector('[data-auth]'))localStorage.setItem('shivay_session','true')}catch(e){}
+var views=[].slice.call(document.querySelectorAll('.view[data-src]'));
+function fit(v){var f=v.firstChild;if(!f)return;var s=v.clientWidth/+v.getAttribute('data-w');f.style.width=v.getAttribute('data-w')+'px';f.style.height=(v.clientHeight/s)+'px';f.style.transform='scale('+s+')'}
+function load(v){if(v.firstChild)return;var f=document.createElement('iframe');f.src=v.getAttribute('data-src');f.loading='lazy';f.tabIndex=-1;f.title='Website preview';f.setAttribute('aria-hidden','true');v.appendChild(f);fit(v)}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target)}})},{rootMargin:'300px'}):null;
+views.forEach(function(v){io?io.observe(v):load(v)});
+addEventListener('resize',function(){views.forEach(fit)});
+})();
+</script>
+</body>
+</html>
